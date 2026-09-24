@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "felix.punchcard",
-  "name": "Punchcard",
+  "id": "felix.time-tracker",
+  "name": "Time Tracker",
   "version": "0.1.0",
   "author": "Felix Campidell",
   "description": "Time tracker for courses, problem sheets and side projects, with stats",
@@ -12,7 +12,7 @@
     "barWidget": "BarWidget.qml"
   },
   "barWidget": {
-    "displayName": "Punchcard",
+    "displayName": "Time Tracker",
     "description": "Start and stop tracking from the bar; popup with log, stats and projects",
     "category": "Time",
     "allowMultiple": false,

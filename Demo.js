@@ -2,7 +2,7 @@
 .import "Store.js" as Store
 
 // A made-up semester for screenshots and for trying the stats tab without
-// real data: `omarchy-shell punchcard demo on`. Seeded, so every run draws
+// real data: `omarchy-shell timetracker demo on`. Seeded, so every run draws
 // the same weeks. The service keeps demo data in memory only.
 
 function rng(seed) {

@@ -1,7 +1,7 @@
 .pragma library
 
 // Pure data layer: parsing, serialising and copy-on-write edits of the
-// punchcard document. Nothing in here touches QML or the filesystem, so the
+// time-tracker document. Nothing in here touches QML or the filesystem, so the
 // whole file runs under node for the tests in tests/.
 //
 // Every edit returns a fresh document instead of mutating the old one. QML

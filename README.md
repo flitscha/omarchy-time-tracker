@@ -1,8 +1,16 @@
-# Punchcard
+# Omarchy Time Tracker
 
 A time tracker that lives in the [Omarchy](https://omarchy.org) bar. Built for
 university courses with a weekly problem sheet, and for side projects that
 just need a running total.
+
+> **Fully vibe-coded.** Every line here, code, tests and this README, was
+> written by an AI (Claude) from a plain-language description, and I have not
+> reviewed it line by line. The data layer has unit tests, and the widget was
+> clicked through on a real Omarchy desktop (start, stop, sheets, editing, a
+> shell restart, simulated shutdown and suspend). Stopping on screen lock has
+> not been tried with a real lock yet. It works on my machine; read it with
+> that in mind.
 
 - **One click** starts or stops a course; clicking another one switches.
 - **Sheets:** courses count their problem sheets. `›` means "this sheet is
@@ -26,15 +34,15 @@ just need a running total.
 Needs Omarchy 4 (the Quickshell-based `omarchy-shell`).
 
 ```bash
-git clone git@github.com:flitscha/punchcard.git ~/projects/punchcard
-~/projects/punchcard/install.sh
+git clone git@github.com:flitscha/omarchy-time-tracker.git ~/projects/omarchy-time-tracker
+~/projects/omarchy-time-tracker/install.sh
 ```
 
-`install.sh` links the checkout to `~/.config/omarchy/plugins/felix.punchcard`
+`install.sh` links the checkout to `~/.config/omarchy/plugins/felix.time-tracker`
 and puts the widget on the bar. To place it yourself:
 
 ```bash
-omarchy bar move felix.punchcard --before omarchy.tray
+omarchy bar move felix.time-tracker --before omarchy.tray
 ```
 
 After changing any QML, restart the shell. Plugin hot-reload does not reliably
@@ -76,16 +84,16 @@ past midnight counts towards the evening it began in.
 ### From the command line
 
 ```bash
-omarchy-shell punchcard status             # JSON: what is running
-omarchy-shell punchcard toggle Optimierung # by name, short name or prefix
-omarchy-shell punchcard start Opt
-omarchy-shell punchcard stop
-omarchy-shell punchcard resume           # or: dismiss
-omarchy-shell punchcard next Optimierung   # sheet done
-omarchy-shell punchcard previous Optimierung
-omarchy-shell punchcard demo on            # made-up semester, nothing saved
-omarchy-shell punchcard probe              # what the lock detection sees
-omarchy-shell shell toggle felix.punchcard # open/close the popup
+omarchy-shell timetracker status             # JSON: what is running
+omarchy-shell timetracker toggle Optimierung # by name, short name or prefix
+omarchy-shell timetracker start Opt
+omarchy-shell timetracker stop
+omarchy-shell timetracker resume           # or: dismiss
+omarchy-shell timetracker next Optimierung   # sheet done
+omarchy-shell timetracker previous Optimierung
+omarchy-shell timetracker demo on            # made-up semester, nothing saved
+omarchy-shell timetracker probe              # what the lock detection sees
+omarchy-shell shell toggle felix.time-tracker # open/close the popup
 ```
 
 These work in Hyprland bindings too, e.g. a key that stops the clock.
@@ -112,7 +120,7 @@ Sessions shorter than a minute are treated as misclicks and not saved.
 
 ## Data
 
-`~/.local/share/punchcard/` (or `$XDG_DATA_HOME/punchcard`):
+`~/.local/share/time-tracker/` (or `$XDG_DATA_HOME/time-tracker`):
 
 - `data.json`: projects and sessions, one per line, safe to read and diff
 - `active.json`: the running session and its heartbeat

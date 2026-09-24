@@ -13,7 +13,7 @@ import "Glyphs.js" as Glyphs
 //   middle click  restart the most recent project
 BarWidget {
   id: root
-  moduleName: "felix.punchcard"
+  moduleName: "felix.time-tracker"
 
   // The service is created by the shell, possibly after this widget, and a
   // function call in a binding would never be re-evaluated. Poll until it
@@ -47,8 +47,8 @@ BarWidget {
   }
 
   readonly property string tooltip: {
-    if (!service) return "Punchcard"
-    if (service.loadError) return "Punchcard: " + service.loadError
+    if (!service) return "Time Tracker"
+    if (service.loadError) return "Time Tracker: " + service.loadError
     if (running && project) {
       var sheetText = service.active.sheet !== null ? " · Sheet " + service.active.sheet : ""
       return project.name + sheetText + " — since " + Store.timeOfDay(service.active.start)
@@ -57,7 +57,7 @@ BarWidget {
     if (showResume)
       return Store.STOP_REASONS[interruption.reason] + " at " + Store.timeOfDay(interruption.at)
         + " — right click to resume " + interruptedProject.name
-    return "Punchcard — nothing running"
+    return "Time Tracker — nothing running"
   }
 
   function lastProjectId() {

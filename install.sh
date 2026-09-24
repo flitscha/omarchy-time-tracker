@@ -4,7 +4,7 @@
 set -euo pipefail
 
 repo="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-target="$HOME/.config/omarchy/plugins/felix.punchcard"
+target="$HOME/.config/omarchy/plugins/felix.time-tracker"
 
 if [[ -e $target && ! -L $target ]]; then
   echo "$target exists and is not a link; move it away first." >&2
@@ -17,6 +17,6 @@ echo "linked $target -> $repo"
 
 omarchy-shell shell rescanPlugins >/dev/null
 sleep 1
-omarchy plugin enable felix.punchcard "$@"
+omarchy plugin enable felix.time-tracker "$@"
 omarchy restart shell >/dev/null 2>&1 &
 echo "restarting the shell"

@@ -9,7 +9,7 @@ import "Demo.js" as Demo
 // bar reloads and popup rebuilds; the bar widget only reads this object and
 // calls its methods.
 //
-// Files, in $XDG_DATA_HOME/punchcard (default ~/.local/share/punchcard):
+// Files, in $XDG_DATA_HOME/time-tracker (default ~/.local/share/time-tracker):
 //   data.json    projects and finished sessions, rewritten on every change
 //   active.json  the running session plus a heartbeat, rewritten every 20 s
 //   backups/     one copy of data.json per day, the last 30 kept
@@ -33,7 +33,7 @@ Item {
 
   readonly property string dataDir: {
     var base = Quickshell.env("XDG_DATA_HOME") || (Quickshell.env("HOME") + "/.local/share")
-    return base + "/punchcard"
+    return base + "/time-tracker"
   }
 
   property var doc: Store.emptyDocument()
@@ -89,7 +89,7 @@ Item {
         // Never overwrite a file we could not read; the popup shows the error
         // and the user can repair or move the file.
         root.loadError = "data.json is not valid JSON: " + parsed.error
-        console.warn("punchcard: " + root.loadError)
+        console.warn("time-tracker: " + root.loadError)
       } else {
         root.doc = parsed.doc
       }
@@ -99,12 +99,12 @@ Item {
     onLoadFailed: function(error) {
       if (error !== FileViewError.FileNotFound) {
         root.loadError = "could not read data.json (error " + error + ")"
-        console.warn("punchcard: " + root.loadError)
+        console.warn("time-tracker: " + root.loadError)
       }
       root.dataLoaded = true
       root.finishLoading()
     }
-    onSaveFailed: function(error) { console.warn("punchcard: saving data.json failed, error " + error) }
+    onSaveFailed: function(error) { console.warn("time-tracker: saving data.json failed, error " + error) }
   }
 
   FileView {
@@ -113,7 +113,7 @@ Item {
     printErrors: false
     onLoaded: { root.pendingActive = Store.parseActive(text()); root.activeLoaded = true; root.finishLoading() }
     onLoadFailed: { root.activeLoaded = true; root.finishLoading() }
-    onSaveFailed: function(error) { console.warn("punchcard: saving active.json failed, error " + error) }
+    onSaveFailed: function(error) { console.warn("time-tracker: saving active.json failed, error " + error) }
   }
 
   property var pendingActive: null
@@ -429,10 +429,10 @@ Item {
 
   // ---- IPC --------------------------------------------------------------------
   //
-  //   omarchy-shell punchcard status
-  //   omarchy-shell punchcard toggle Optimierung
-  //   omarchy-shell punchcard stop | resume | dismiss | next <project> | previous <project>
-  //   omarchy-shell punchcard demo on|off
+  //   omarchy-shell timetracker status
+  //   omarchy-shell timetracker toggle Optimierung
+  //   omarchy-shell timetracker stop | resume | dismiss | next <project> | previous <project>
+  //   omarchy-shell timetracker demo on|off
 
   function findProject(query) {
     var q = String(query || "").trim().toLowerCase()
@@ -446,7 +446,7 @@ Item {
   }
 
   IpcHandler {
-    target: "punchcard"
+    target: "timetracker"
 
     function status(): string {
       var p = root.activeProject
