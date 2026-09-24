@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "felix.punchcard",
+  "name": "Punchcard",
+  "version": "0.1.0",
+  "author": "Felix Campidell",
+  "description": "Time tracker for courses, problem sheets and side projects, with stats",
+  "kinds": ["service", "bar-widget"],
+  "keepLoaded": true,
+  "entryPoints": {
+    "service": "Service.qml",
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Punchcard",
+    "description": "Start and stop tracking from the bar; popup with log, stats and projects",
+    "category": "Time",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}
