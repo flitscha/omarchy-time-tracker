@@ -52,6 +52,17 @@ to a `keepLoaded` service:
 omarchy restart shell
 ```
 
+### Remove
+
+```bash
+omarchy plugin remove felix.time-tracker
+```
+
+takes it off the bar and deletes the plugin. Your tracked time stays in
+`~/.local/share/time-tracker/`; delete that folder too to remove everything.
+(For a checkout linked with `install.sh`: `omarchy plugin disable
+felix.time-tracker`, then remove the link in `~/.config/omarchy/plugins/`.)
+
 ### What it does on your machine
 
 - Writes only to `~/.local/share/time-tracker/` (see [Data](#data)). Once a
