@@ -27,10 +27,6 @@ just need a running total.
 
 <img src="docs/stats-overview.png" width="600" alt="Stats overview">
 
-Time per sheet against the average, and when each sheet got done:
-
-<img src="docs/stats-sheets.png" width="600" alt="Time per sheet">
-
 When you work - the punchcard and the last 14 days:
 
 <img src="docs/stats-rhythm.png" width="600" alt="Punchcard and timeline">
