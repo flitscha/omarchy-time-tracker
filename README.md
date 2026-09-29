@@ -31,26 +31,35 @@ just need a running total.
 
 ## Install
 
-Needs Omarchy 4 (the Quickshell-based `omarchy-shell`).
+Needs Omarchy 4 (the Quickshell-based `omarchy-shell`), nothing else.
 
 ```bash
-git clone git@github.com:flitscha/omarchy-time-tracker.git ~/projects/omarchy-time-tracker
-~/projects/omarchy-time-tracker/install.sh
+omarchy plugin add https://github.com/flitscha/omarchy-time-tracker.git --enable
 ```
 
-`install.sh` links the checkout to `~/.config/omarchy/plugins/felix.time-tracker`
-and puts the widget on the bar. To place it yourself:
+It lands on the right of the bar. To place it yourself:
 
 ```bash
 omarchy bar move felix.time-tracker --before omarchy.tray
 ```
 
-After changing any QML, restart the shell. Plugin hot-reload does not reliably
-pick up changes to a `keepLoaded` service:
+To work on it, clone it anywhere and run `./install.sh`, which links the
+checkout into `~/.config/omarchy/plugins/felix.time-tracker` instead. After
+changing QML, restart the shell - hot reload does not reliably pick up changes
+to a `keepLoaded` service:
 
 ```bash
 omarchy restart shell
 ```
+
+### What it does on your machine
+
+- Writes only to `~/.local/share/time-tracker/` (see [Data](#data)). Once a
+  day a small shell command there copies `data.json` into `backups/` and
+  deletes the backups beyond the newest 30 - the only thing it ever deletes.
+- Reads Hyprland's monitor state every 5 s while a session runs, to notice
+  a locked screen.
+- No network access.
 
 ## Using it
 

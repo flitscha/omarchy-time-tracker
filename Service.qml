@@ -178,7 +178,7 @@ Item {
     backupProc.command = ["bash", "-c",
       "[ -s \"$1/data.json\" ] || exit 0; "
       + "cp -n \"$1/data.json\" \"$1/backups/data-$2.json\"; "
-      + "ls -1 \"$1/backups\"/data-*.json | head -n -30 | xargs -r rm --",
+      + "ls -1 \"$1/backups\"/data-*.json | head -n -30 | xargs -r -d '\\n' rm --",
       "backup", dataDir, lastBackupDay]
     backupProc.running = true
   }
