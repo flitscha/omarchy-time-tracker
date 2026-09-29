@@ -430,7 +430,7 @@ Item {
   // ---- IPC --------------------------------------------------------------------
   //
   //   omarchy-shell timetracker status
-  //   omarchy-shell timetracker toggle Optimierung
+  //   omarchy-shell timetracker toggle Optimization
   //   omarchy-shell timetracker stop | resume | dismiss | next <project> | previous <project>
   //   omarchy-shell timetracker demo on|off
 

@@ -30,11 +30,11 @@ function generate(now) {
   var firstMonday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() - 7 * (weeks - 1))
 
   var courses = [
-    { id: "demo-opt", name: "Optimierung", short: "Opt", mode: "sheets", color: 0, effort: 5.5, evening: 0.5 },
-    { id: "demo-ana", name: "Analysis III", short: "Ana", mode: "sheets", color: 1, effort: 7, evening: 0.3 },
-    { id: "demo-num", name: "Numerik", short: "Num", mode: "sheets", color: 2, effort: 4, evening: 0.2 },
+    { id: "demo-opt", name: "Optimization", short: "Opt", mode: "sheets", color: 0, effort: 5.5, evening: 0.5 },
+    { id: "demo-meas", name: "Measure Theory", short: "Meas", mode: "sheets", color: 1, effort: 7, evening: 0.3 },
+    { id: "demo-num", name: "Numerical Analysis", short: "Num", mode: "sheets", color: 2, effort: 4, evening: 0.2 },
     { id: "demo-rice", name: "Linux ricing", short: "Rice", mode: "counter", color: 3, effort: 3, evening: 0.8 },
-    { id: "demo-sem", name: "Proseminar", short: "Sem", mode: "counter", color: 4, effort: 1.5, evening: 0.1, hidden: true }
+    { id: "demo-sem", name: "Seminar", short: "Sem", mode: "counter", color: 4, effort: 1.5, evening: 0.1, hidden: true }
   ]
 
   var doc = Store.emptyDocument()

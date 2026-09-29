@@ -72,7 +72,7 @@ BorderSurface {
       TextField {
         id: nameField
         width: parent.width - shortField.width - parent.spacing
-        placeholderText: "Name, e.g. Optimierung"
+        placeholderText: "Name, e.g. Optimization"
         foreground: root.look.fg
         font.family: root.look.font
         Keys.onPressed: function(event) { root.handleKey(event) }

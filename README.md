@@ -21,13 +21,21 @@ just need a running total.
 - **Safety nets:** shutdown, suspend and screen lock stop the clock on their
   own. A shell restart does not.
 
-![Track tab](docs/track.png)
+<img src="docs/track.png" width="600" alt="Track tab">
 
-| Overview | Sheets | Rhythm |
-|---|---|---|
-| ![Stats overview](docs/stats-overview.png) | ![Time per sheet](docs/stats-sheets.png) | ![Punchcard and timeline](docs/stats-rhythm.png) |
+**Stats** - hours per week and where the time went:
 
-*(Screenshots show the built-in demo data.)*
+<img src="docs/stats-overview.png" width="600" alt="Stats overview">
+
+Time per sheet against the average, and when each sheet got done:
+
+<img src="docs/stats-sheets.png" width="600" alt="Time per sheet">
+
+When you work - the punchcard and the last 14 days:
+
+<img src="docs/stats-rhythm.png" width="600" alt="Punchcard and timeline">
+
+*(Screenshots show the built-in demo data: `omarchy-shell timetracker demo on`.)*
 
 ## Install
 
@@ -104,16 +112,16 @@ past midnight counts towards the evening it began in.
 ### From the command line
 
 ```bash
-omarchy-shell timetracker status             # JSON: what is running
-omarchy-shell timetracker toggle Optimierung # by name, short name or prefix
+omarchy-shell timetracker status                 # JSON: what is running
+omarchy-shell timetracker toggle Optimization    # by name, short name or prefix
 omarchy-shell timetracker start Opt
 omarchy-shell timetracker stop
-omarchy-shell timetracker resume           # or: dismiss
-omarchy-shell timetracker next Optimierung   # sheet done
-omarchy-shell timetracker previous Optimierung
-omarchy-shell timetracker demo on            # made-up semester, nothing saved
-omarchy-shell timetracker probe              # what the lock detection sees
-omarchy-shell shell toggle felix.time-tracker # open/close the popup
+omarchy-shell timetracker resume                 # or: dismiss
+omarchy-shell timetracker next Optimization      # sheet done
+omarchy-shell timetracker previous Optimization
+omarchy-shell timetracker demo on                # made-up semester, nothing saved
+omarchy-shell timetracker probe                  # what the lock detection sees
+omarchy-shell shell toggle felix.time-tracker    # open/close the popup
 ```
 
 These work in Hyprland bindings too, e.g. a key that stops the clock.
