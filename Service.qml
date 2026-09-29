@@ -172,16 +172,24 @@ Item {
     return today() !== lastBackupDay
   }
 
-  // One copy per day, the newest 30 kept.
+  // One copy per day, the newest 30 kept. Only ever inside backups/ itself:
+  // if backups/ is a symlink the whole step is skipped, the copy never writes
+  // through a symlink, and the cleanup only deletes regular files directly in
+  // it - never what a link points to, never anything in a subfolder.
   function startBackup() {
     lastBackupDay = today()
-    backupProc.command = ["bash", "-c",
-      "[ -s \"$1/data.json\" ] || exit 0; "
-      + "cp -n \"$1/data.json\" \"$1/backups/data-$2.json\"; "
-      + "ls -1 \"$1/backups\"/data-*.json | head -n -30 | xargs -r -d '\\n' rm --",
-      "backup", dataDir, lastBackupDay]
+    backupProc.command = ["bash", "-c", backupScript, "backup", dataDir, lastBackupDay]
     backupProc.running = true
   }
+
+  readonly property string backupScript:
+    "b=\"$1/backups\"; "
+    + "[ -d \"$b\" ] && [ ! -L \"$b\" ] || exit 0; "
+    + "[ -s \"$1/data.json\" ] || exit 0; "
+    + "t=\"$b/data-$2.json\"; "
+    + "[ -e \"$t\" ] || [ -L \"$t\" ] || cp -- \"$1/data.json\" \"$t\"; "
+    + "find \"$b\" -mindepth 1 -maxdepth 1 -type f -name 'data-*.json' -printf '%f\\n' "
+    + "| sort | head -n -30 | while IFS= read -r f; do rm -f -- \"$b/$f\"; done"
 
   Process {
     id: backupProc
